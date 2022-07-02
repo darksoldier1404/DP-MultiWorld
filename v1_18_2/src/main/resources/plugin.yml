@@ -2,7 +2,7 @@ name: DP-MultiWorld
 version: 1.0.0.1
 main: com.darksoldier1404.dmw.MultiWorld
 authors: [ DEAD_POOLIO_ ]
-api-version: 1.17
+api-version: 1.18
 depend:
   - DPP-Core
 commands:
