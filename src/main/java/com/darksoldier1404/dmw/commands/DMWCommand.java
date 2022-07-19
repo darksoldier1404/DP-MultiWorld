@@ -23,10 +23,6 @@ public class DMWCommand implements CommandExecutor, TabCompleter {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String s, String[] args) {
-        if (!sender.isOp()) {
-            sender.sendMessage("권한이 없습니다.");
-            return false;
-        }
         if (args.length == 0) {
             sender.sendMessage(prefix + "/dmw create <world> <type> <GS> <기본높이> - 월드를 생성합니다.");
             sender.sendMessage(prefix + "NORMAL, NETHER, END, FLAT, VOID");
@@ -43,6 +39,10 @@ public class DMWCommand implements CommandExecutor, TabCompleter {
             return false;
         }
         if (args[0].equalsIgnoreCase("create")) {
+            if(!sender.hasPermission("dmw.create")) {
+                sender.sendMessage(prefix + "당신은 이 명령어를 사용할 권한이 없습니다.");
+                return false;
+            }
             if (args.length == 1) {
                 sender.sendMessage(prefix + "생성할 월드 이름을 입력해주세요.");
                 return false;
@@ -70,6 +70,10 @@ public class DMWCommand implements CommandExecutor, TabCompleter {
             }
         }
         if (args[0].equalsIgnoreCase("tp")) {
+            if(!sender.hasPermission("dmw.tp")) {
+                sender.sendMessage(prefix + "당신은 이 명령어를 사용할 권한이 없습니다.");
+                return false;
+            }
             if (args.length == 1) {
                 sender.sendMessage(prefix + "이동할 월드 이름을 입력해주세요.");
                 return false;
@@ -90,6 +94,10 @@ public class DMWCommand implements CommandExecutor, TabCompleter {
             }
         }
         if (args[0].equalsIgnoreCase("delete")) {
+            if(!sender.hasPermission("dmw.delete")) {
+                sender.sendMessage(prefix + "당신은 이 명령어를 사용할 권한이 없습니다.");
+                return false;
+            }
             if (args.length == 1) {
                 sender.sendMessage(prefix + "삭제할 월드 이름을 입력해주세요.");
                 return false;
@@ -100,6 +108,10 @@ public class DMWCommand implements CommandExecutor, TabCompleter {
             }
         }
         if (args[0].equalsIgnoreCase("info")) {
+            if(!sender.hasPermission("dmw.info")) {
+                sender.sendMessage(prefix + "당신은 이 명령어를 사용할 권한이 없습니다.");
+                return false;
+            }
             if (args.length == 1) {
                 sender.sendMessage(prefix + "월드 이름을 입력해주세요.");
                 return false;
@@ -116,6 +128,10 @@ public class DMWCommand implements CommandExecutor, TabCompleter {
             }
         }
         if(args[0].equalsIgnoreCase("spawn")) {
+            if(!sender.hasPermission("dmw.spawn")) {
+                sender.sendMessage(prefix + "당신은 이 명령어를 사용할 권한이 없습니다.");
+                return false;
+            }
             if(!(sender instanceof Player)) {
                 sender.sendMessage(MultiWorld.prefix + "플레이어만 스폰지점을 설정할 수 있습니다.");
                 return false;
@@ -124,6 +140,10 @@ public class DMWCommand implements CommandExecutor, TabCompleter {
             return false;
         }
         if(args[0].equalsIgnoreCase("dif")) {
+            if(!sender.hasPermission("dmw.dif")) {
+                sender.sendMessage(prefix + "당신은 이 명령어를 사용할 권한이 없습니다.");
+                return false;
+            }
             if(args.length == 1) {
                 sender.sendMessage(prefix + "월드를 입력해주세요.");
                 return false;
@@ -138,11 +158,19 @@ public class DMWCommand implements CommandExecutor, TabCompleter {
             }
         }
         if(args[0].equalsIgnoreCase("list")) {
+            if(!sender.hasPermission("dmw.list")) {
+                sender.sendMessage(prefix + "당신은 이 명령어를 사용할 권한이 없습니다.");
+                return false;
+            }
             sender.sendMessage(prefix + "월드 목록입니다.");
             MultiWorld.customWorlds.keySet().forEach(sender::sendMessage);
             return false;
         }
         if(args[0].equalsIgnoreCase("rule")) {
+            if(!sender.hasPermission("dmw.rule")) {
+                sender.sendMessage(prefix + "당신은 이 명령어를 사용할 권한이 없습니다.");
+                return false;
+            }
             if(args.length == 1) {
                 sender.sendMessage(prefix + "월드를 입력해주세요.");
                 return false;
